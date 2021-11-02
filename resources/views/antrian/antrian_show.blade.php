@@ -5,7 +5,7 @@
     @media print { body { 
         font-family: Arial, Helvetica, sans-serif;
         text-align: center;
-        width: 58mm;
+       
         } } /* fix for Chrome */
 </style>
 @stop
