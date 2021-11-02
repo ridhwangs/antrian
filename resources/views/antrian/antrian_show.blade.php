@@ -11,7 +11,7 @@
 @stop
 @section('content')
 <section onclick="window.print();">
-        <span style="font-size:100pt;">PT. SURYAPUTRA SARANA</span>
+        <span style="font-size:60pt;">PT. SURYAPUTRA SARANA</span>
         <p style="font-size:50pt;">Nomor Antrian</p>
         <h1 style="font-size:200pt;">{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
         <span style="font-size:70pt;">{{ $data->keterangan }}</span>
