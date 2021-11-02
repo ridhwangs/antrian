@@ -10,7 +10,7 @@
 </style>
 @stop
 @section('content')
-<section onclick="window.print();">
+        <img src="//www.ptsps.co.id/wp-content/uploads/2019/11/logo-sps.png" width="150px">
         <span style="font-size:60pt;">PT. SURYAPUTRA SARANA</span>
         <p style="font-size:50pt;">Nomor Antrian</p>
         <h1 style="font-size:280pt;">{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
@@ -19,8 +19,6 @@
         <br>
         @endfor
         **
-      
-</section>
 
 @stop
 @section('custom_script')
