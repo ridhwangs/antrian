@@ -8,7 +8,7 @@
 </style>
 @stop
 @section('content')
-<form action="{{ route('store') }}" method="POST" autocomplete="off">
+<form action="{{ route('antrian.store') }}" method="POST" autocomplete="off">
 @csrf
     <div class="row p-4">
         <div class="col-sm-12 mb-4">
@@ -34,6 +34,8 @@
     </div>
 
 </form>
+
+
 @stop
 @section('custom_script')
 @stop

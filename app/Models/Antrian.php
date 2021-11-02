@@ -10,6 +10,7 @@ class Antrian extends Model
     use HasFactory;
     protected $table = 'data_antrian';
     protected $fillable = [
+        'antrian_id',
         'jenis_id',
         'dealerID',
         'nomor',

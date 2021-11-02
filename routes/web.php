@@ -12,5 +12,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/', '\App\Http\Controllers\AntrianController');
+Route::get('/', [App\Http\Controllers\AntrianController::class, 'index'])->name('antrian.view');
+Route::resource('/antrian', '\App\Http\Controllers\AntrianController');

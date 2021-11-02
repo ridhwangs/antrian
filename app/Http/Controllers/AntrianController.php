@@ -64,7 +64,8 @@ class AntrianController extends Controller
         ];
         Antrian::create($data);
         Tmp::where('dealerID', '100109')->update(['nomor' => $data['nomor']]); 
-        return redirect(route('create'));
+        $last_data = Antrian::where($data)->first();
+        return redirect(route('antrian.show',$last_data->antrian_id));
     }
 
     /**
@@ -75,7 +76,11 @@ class AntrianController extends Controller
      */
     public function show($id)
     {
-        //
+        $compact = [
+            'data' => Antrian::where('antrian_id',$id)->first()
+        ];
+
+        return view('antrian.antrian_show', $compact);
     }
 
     /**
@@ -86,7 +91,7 @@ class AntrianController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
