@@ -17,10 +17,16 @@
         @for($i = 0; $i < 30; $i++)
         <br>
         @endfor
-        *****
+        <p style="font-size:80pt;">Terima Kasih</p>
+        @for($i = 0; $i < 20; $i++)
+        <br>
+        @endfor
 </section>
+
+@stop
+@section('custom_script')
 <script type="text/javascript">
-setTimeout(function () { window.print(); }, 500);
-        window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }
+    window.print();
+    window.onfocus=function(){ window.close();}
 </script>
 @stop
