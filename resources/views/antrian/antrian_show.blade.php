@@ -97,7 +97,6 @@ $( document ).ready(function() {
         var mywindow = window.open('', 'print-section', 'height=' + screen.height + ',width=' + screen.width);
         popupBlockerChecker.check(mywindow);
         mywindow.document.write('<html><head><title></title>');
-        mywindow.document.write('<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);
         mywindow.document.write('</body></html>');
