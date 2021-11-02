@@ -1,15 +1,7 @@
 @extends('layouts.app')
 @section('title', $data->antrian_id)
 @section('custom_style')
-<style>
-    body{
-        background:#FFFFFF;
-       
-    }
-    @page { size: 58mm 100mm } /* output size */
-    body.receipt .sheet { width: 58mm; height: 100mm } /* sheet size */
-    @media print { body.receipt { width: 58mm } } /* fix for Chrome */
-</style>
+
 @stop
 @section('content')
 <button class="btn btn-sm mb-3 btn-secondary btn-block rounded-0" onclick="printDiv('.print-section');">Print</button>
@@ -54,7 +46,6 @@ function printDiv(elem) {
         var mywindow = window.open('', 'print-section', 'height=' + screen.height + ',width=' + screen.width);
         popupBlockerChecker.check(mywindow);
         mywindow.document.write('<html><head><title>PRINT</title>');
-        mywindow.document.write('<link rel="stylesheet" href={{ asset('css/app.css') }}>');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);
         mywindow.document.write('</body></html>');
