@@ -4,6 +4,7 @@
 <style>
     @media print { body { 
         font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
         width: 58mm;
         } } /* fix for Chrome */
 </style>
@@ -11,7 +12,7 @@
 @section('content')
 <section onclick="window.print();">
         <p style="font-size:100pt;">Nomor Antrian</p>
-        <h1 style="font-size:200pt;">{{ $data->nomor }}</h1>
-        <span style="font-size:100pt;">{{ $data->jenis_id }}</span>
+        <h1 style="font-size:200pt;">{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
+        <span style="font-size:100pt;">{{ $data->keterangan }}</span>
 </section>
 @stop
