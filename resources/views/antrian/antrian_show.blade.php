@@ -3,8 +3,8 @@
 @section('custom_style')
 <style>
     @media print { body { 
-        width: 58mm; height: 50mm;
-        font-size:40pt;
+        width: 58mm; height: 100mm;
+        font-size:120pt;
         } } /* fix for Chrome */
 </style>
 @stop
