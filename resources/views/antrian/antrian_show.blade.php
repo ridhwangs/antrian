@@ -14,7 +14,7 @@
         <p style="font-size:100pt;">Nomor Antrian</p>
         <h1 style="font-size:200pt;">{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
         <span style="font-size:70pt;">{{ $data->keterangan }}</span>
-        <br><br><br><br><br>
+        <br style="height:150px;">
         **
 </section>
 @stop
