@@ -26,7 +26,7 @@
 <script type="text/javascript">
     window.print();
     window.onfocus=function(){ 
-        window.location.replace("{{ route('antrian.cerate') }}?dealeriD={{ $_GET['dealerID'] }}");
+        window.location.replace("{{ route('antrian.create') }}?dealerID={{ $_GET['dealerID'] }}");
     }
 </script>
 @stop
