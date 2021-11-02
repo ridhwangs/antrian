@@ -2,7 +2,10 @@
 @section('title', $data->antrian_id)
 @section('custom_style')
 <style>
-    @media print { body { width: 58mm; height: 50mm } } /* fix for Chrome */
+    @media print { body { 
+        width: 58mm; height: 50mm;
+        font-size:40pt;
+        } } /* fix for Chrome */
 </style>
 @stop
 @section('content')
