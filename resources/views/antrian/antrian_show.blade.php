@@ -17,16 +17,16 @@
         @for($i = 0; $i < 30; $i++)
         <br>
         @endfor
-        <p style="font-size:80pt;">Terima Kasih</p>
-        @for($i = 0; $i < 20; $i++)
-        <br>
-        @endfor
+        <p style="font-size:50pt;">Terima Kasih</p>
+      
 </section>
 
 @stop
 @section('custom_script')
 <script type="text/javascript">
     window.print();
-    window.onfocus=function(){ window.close();}
+    window.onfocus=function(){ 
+        window.location.replace("http://www.w3schools.com");
+    }
 </script>
 @stop
