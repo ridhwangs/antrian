@@ -6,7 +6,7 @@
         background:#FFFFFF;
     }
     @page { size: 58mm 100mm } /* output size */
-    body.receipt .sheet { width: 58mm; height: 100mm } /* sheet size */
+    body.receipt .sheet { width: 58mm; height: 50mm } /* sheet size */
     @media print { body.receipt { width: 58mm } } /* fix for Chrome */
 </style>
 @stop
