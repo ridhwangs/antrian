@@ -3,37 +3,38 @@
 @section('custom_style')
 <style>
     body{
-        background:#1abc9c;
+        background:#e67e22;
     }
 </style>
 @stop
 @section('content')
-<form action="{{ route('antrian.store') }}" method="POST" autocomplete="off">
-@csrf
     <div class="row p-4">
         <div class="col-sm-12 mb-4">
-            <div class="card">
+            <div class="card rounded-2">
                 <div class="card-body text-center">
                     <h1 class="display-4">ANTRIAN {{ str_pad($tmp->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
-                    <p class="card-text"></p>
+                    <p class="card-text"><a href="{{ url('antrian') }}" class="btn btn-xs btn-primary rounded-0">{{ $tmp->dealerID }}</a></p>
                 </div>
             </div>
         </div>
-        @foreach($jenis_antrian AS $key => $rows)
-        <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
-        <div class="col-sm-6 mb-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
-                    <p class="card-text">{{ $rows->keterangan}}</p>
-                    <button type="submit" class="btn btn-warning btn-block rounded-0">Cetak</button>
-                </div>
-            </div>
-        </div>
+        @foreach($jenis_antrian AS $key => $rows)     
+                    <div class="col-sm-6 mb-4">
+                        <div class="card rounded-0">
+                            <div class="card-body text-center">
+                                <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
+                                <p class="card-text">{{ $rows->keterangan}}</p>
+                                <form action="{{ route('antrian.store') }}" method="POST" autocomplete="off">
+                                    @csrf
+                                        <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
+                                        <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
+                                        <button type="submit" class="btn btn-warning btn-block rounded-0">Pilih</button>    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
         @endforeach
     </div>
 
-</form>
 
 
 @stop

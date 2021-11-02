@@ -2,9 +2,15 @@
 @section('title', $data->antrian_id)
 @section('custom_style')
 <style>
-    body{
-        background:#FFFFFF;
-       
+    body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #212529;
+        text-align: left;
+        background-color: #f8fafc !important;
     }
     @page { size: 58mm 100mm } /* output size */
     body.receipt .sheet { width: 58mm; height: 100mm } /* sheet size */
@@ -12,16 +18,34 @@
 </style>
 @stop
 @section('content')
-<button class="btn btn-sm mb-3 btn-secondary btn-block rounded-0" onclick="printDiv('.print-section');">Print</button>
-    <section class="print-section text-center">
-        <p>Nomor Antrian</p>
-        <h1>{{ $data->nomor }}</h1>
-        <span>{{ $data->jenis_id }}</span>
-    </section>
+    <div class="row p-4 d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <div class="col-sm-4 mb-3">
+            <div class="card rounded-0">
+                <div class="card-header"><a class="btn btn-danger rounded-0 float-right" href="{{ route('antrian.create') }}?dealerID={{ $_GET['dealerID'] }}">Close</a></div>
+                <div class="card-body">
+                    <section class="print-section text-center">
+                        <p class="mb-0 text-center">PT. SURYAPUTRA SARANA</p>
+                        <p class="mb-0 text-center" style="font-size:8pt;">{{ $data->dealerID }}</p>
+                        <h1 class="mb-0 text-center" style="font-size:64pt;">{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
+                        <p class="mb-0 text-center">{{ $data->keterangan }}</p>
+                        <br><br><br><br>
+                        <p><sup>**terima kasih atas kunjungan anda**</sup></p>
+                        <br>
+                    </section>
+                </div>
+                <div class="card-footer">
+                    <button id="btn-print" onclick="printDiv('.print-section');" class="btn btn-primary btn-block rounded-0">Print</button>
+                </div>
+            </div>
+        </div>  
+    </div>
 @stop
 @section('custom_script')
 <script type="text/javascript">
-function printDiv(elem) {
+$( document ).ready(function() {
+    $("#btn-print").click();
+});
+    function printDiv(elem) {
         renderMe($('<div/>').append($(elem).clone()).html());
     }
     var popupBlockerChecker = {
@@ -53,8 +77,8 @@ function printDiv(elem) {
     function renderMe(data) {
         var mywindow = window.open('', 'print-section', 'height=' + screen.height + ',width=' + screen.width);
         popupBlockerChecker.check(mywindow);
-        mywindow.document.write('<html><head><title>PRINT</title>');
-        mywindow.document.write('<link rel="stylesheet" href={{ asset('css/app.css') }}>');
+        mywindow.document.write('<html><head><title></title>');
+        mywindow.document.write('<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);
         mywindow.document.write('</body></html>');

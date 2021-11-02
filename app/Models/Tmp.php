@@ -13,6 +13,6 @@ class Tmp extends Model
         'jenis_id',
         'dealerID',
         'nomor',
-        'last_update',
+        'tanggal',
     ];
 }
