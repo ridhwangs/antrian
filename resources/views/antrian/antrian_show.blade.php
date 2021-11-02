@@ -39,9 +39,28 @@
             </div>
         </div>  
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<button class="print">Print this page</button>
 @stop
 @section('custom_script')
 <script type="text/javascript">
+$(document).ready(function($) {
+  var ua = navigator.userAgent.toLowerCase();
+  var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+
+  $('button.print').click(function(e) {
+    e.preventDefault();
+    if (isAndroid) {
+      // https://developers.google.com/cloud-print/docs/gadget
+      var gadget = new cloudprint.Gadget();
+      gadget.setPrintDocument("url", $('title').html(), window.location.href, "utf-8");
+      gadget.openPrintDialog();
+    } else {
+      window.print();
+    }
+    return false;
+  });
+});
 $( document ).ready(function() {
     $("#btn-print").click();
 });
