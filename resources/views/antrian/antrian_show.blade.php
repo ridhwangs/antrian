@@ -2,12 +2,7 @@
 @section('title', $data->antrian_id)
 @section('custom_style')
 <style>
-    body{
-        background:#FFFFFF;
-    }
-    @page { size: 58mm 100mm } /* output size */
-    body.receipt .sheet { width: 58mm; height: 50mm } /* sheet size */
-    @media print { body.receipt { width: 58mm } } /* fix for Chrome */
+    @media print { body { width: 58mm; height: 50mm } } /* fix for Chrome */
 </style>
 @stop
 @section('content')
@@ -17,7 +12,4 @@
         <h1>{{ $data->nomor }}</h1>
         <span>{{ $data->jenis_id }}</span>
     </section>
-@stop
-@section('custom_script')
-
 @stop
