@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [App\Http\Controllers\AntrianController::class, 'index'])->name('antrian.view');
 Route::resource('/antrian', '\App\Http\Controllers\AntrianController');
+
+Route::resource('/dashboard', '\App\Http\Controllers\DashboardController');
+Route::get('/dashboard/call/{id}', [App\Http\Controllers\DashboardController::class, 'call'])->name('dashboard.call');
+Route::get('/dashboard/ajax/call', [App\Http\Controllers\DashboardController::class, 'ajax'])->name('dashboard.ajax');

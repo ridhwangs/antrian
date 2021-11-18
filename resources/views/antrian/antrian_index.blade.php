@@ -8,6 +8,7 @@
 </style>
 @stop
 @section('content')
+<div class="container-fluid">
     <div class="row p-4 d-flex flex-column min-vh-100 justify-content-center align-items-center">
         @foreach($data_cabang AS $key => $rows)
         <div class="col-sm-6 mb-3">
@@ -21,6 +22,7 @@
         </div>
         @endforeach
     </div>
+</div>
 @stop
 @section('custom_script')
 @stop

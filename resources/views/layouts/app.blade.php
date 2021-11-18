@@ -9,9 +9,8 @@
     @yield('custom_style')
 </head>
 <body>
-    <div class="container-fluid">
+    
         @yield('content')
-    </div>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('custom_script')
 </body>

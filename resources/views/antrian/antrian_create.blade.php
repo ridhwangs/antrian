@@ -8,6 +8,7 @@
 </style>
 @stop
 @section('content')
+<div class="container-fluid">
     <div class="row p-4">
         <div class="col-sm-12 mb-4">
             <div class="card rounded-2">
@@ -18,16 +19,15 @@
             </div>
         </div>
         @foreach($jenis_antrian AS $key => $rows)     
-                    <div class="col-sm-6 mb-4">
+                    <div class="col-sm-6 mb-4" onclick="document.getElementById('form-{{ $rows->jenis_id }}').submit();" style="cursor:pointer;">
                         <div class="card rounded-0">
                             <div class="card-body text-center">
                                 <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
                                 <p class="card-text">{{ $rows->keterangan}}</p>
-                                <form action="{{ route('antrian.store') }}" method="POST" autocomplete="off">
+                                <form action="{{ route('antrian.store') }}" method="POST" id="form-{{ $rows->jenis_id }}" autocomplete="off">
                                     @csrf
                                         <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
                                         <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
-                                        <button type="submit" class="btn btn-warning btn-block rounded-0">Pilih</button>    
                                 </form>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
         @endforeach
     </div>
 
-
+</div>
 
 @stop
 @section('custom_script')
