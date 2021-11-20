@@ -22,7 +22,7 @@
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="row btn-group-sm mb-2" role='group'>
+                            <div class="mb-2" role='group'>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">Q</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">W</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">E</button>
@@ -114,7 +114,25 @@
       
     </div>
    
-
+    <div class="col-sm">
+            @foreach($jenis_antrian AS $key => $rows)     
+                <div class="mb-4" onclick="document.getElementById('form-{{ $rows->jenis_id }}').submit();" style="cursor:pointer;">
+                    <div class="card rounded-0">
+                        <div class="card-body text-center">
+                            <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
+                            <p class="card-text">{{ $rows->keterangan}}</p>
+                            <form action="{{ route('antrian.store') }}" method="POST" id="form-{{ $rows->jenis_id }}" autocomplete="off">
+                                @csrf
+                                    <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
+                                    <input type="hidden" name="no_pol" class="no_pol">
+                                    <input type="hidden" name="kilometer" class="kilometer">
+                                    <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
 
 @stop
