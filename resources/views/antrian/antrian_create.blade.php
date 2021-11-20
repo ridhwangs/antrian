@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Antrian Create')
 @section('custom_style')
-
+<style>
+    body{
+        background:#95a5a6;
+    }
+</style>
 @stop
 @section('content')
 <div class="container-fluid pt-4">

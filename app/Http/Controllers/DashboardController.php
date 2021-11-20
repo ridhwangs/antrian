@@ -98,12 +98,12 @@ class DashboardController extends Controller
     public function call($id)
     {
         $data = [
-            'counter' => 1,
+            'counter' => $_GET['counter'],
             'updated_at' => date('Y-m-d H:i:s')
         ];
         
         Antrian::where('antrian_id', $id)->update($data);
-        return redirect(route('dashboard.show', $id));
+        return redirect(route('dashboard.show', $id).'?counter='. $_GET['counter']);
     }
 
     public function ajax(Request $request)
