@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div >
+        <div class="col-md-3">
             <div class="card rounded-0 " id="keyboard-kilometer" data-toggle="keybrd" data-target-input="#tmp_kilometer">
                 <div class="card-header input-group">
                     <input class="form-control rounded-0"  onkeyup="getKilometer()"  placeholder="Kilometer Kendaraan" inputmode='none' id="tmp_kilometer" type="text">
