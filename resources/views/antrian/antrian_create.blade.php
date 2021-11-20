@@ -14,7 +14,7 @@
             <div class="card rounded-2">
                 <div class="card-body text-center">
                     <h1 class="display-4">ANTRIAN {{ str_pad($tmp->nomor, 3, '0', STR_PAD_LEFT) }}</h1>
-                    <p class="card-text"><a href="{{ url('antrian') }}" class="btn btn-xs btn-primary rounded-0">{{ $tmp->dealerID }}</a></p>
+                    <p class="card-text"><a href="{{ url('antrian') }}" class="btn btn-xs btn-secondary rounded-0 rounded-0">{{ $tmp->dealerID }}</a></p>
                 </div>
             </div>
         </div>
@@ -23,10 +23,43 @@
             <div class="mb-3">
                 <input type="text" class="form-control input" onkeyup="getNoPol()" inputmode='none' id="tmp_no_pol" aria-describedby="tmp_no_pol" autofocus>
                 <div id="tmp_no_pol" class="form-text">Masukan No Polisi</div>
+                
             </div>
             <div class="mb-3">
-                <input type="number" class="form-control input" onkeyup="getKilometer()" id="tmp_kilometer" aria-describedby="tmp_kilometer">
-                <div id="tmp_kilometer" class="form-text">Kilometer terakhir kendaraan</div>
+               <div class="container">
+                    <div class="row">
+                        <div class="col-sm p-0 pt-3">
+                            <input class="form-control form-control-lg my-input rounded-0"  onkeyup="getKilometer()" inputmode='none' id="tmp_kilometer" type="text" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container my-3" id='second' data-toggle="keybrd" data-target-input=".my-input">
+                            <div class="row btn-group-lg mb-3" role='group'>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">1</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">2</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3">3</button>
+                            </div>
+                            <div class="row btn-group-lg mb-3">
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">4</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">5</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3">6</button>
+                            </div>
+                            <div class="row btn-group-lg mb-3">
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">7</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">8</button>
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3">9</button>
+                            </div>
+                            <div class="row btn-group-lg mb-3">
+                                <button type="button" class="col-sm btn btn-secondary rounded-0 py-3 mr-3">0</button>
+                                <button type="button" class="col-sm-4 btn btn-danger rounded-0 py-3">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+
             </div>
         </div>
 
@@ -50,7 +83,9 @@
             @endforeach
         </div>
     </div>
-    <div class="simple-keyboard"></div>
+
+<hr>
+
 </div>
 
 @stop
@@ -64,49 +99,17 @@
         var kilometer = $("#tmp_kilometer").val();
         $(".kilometer").val(kilometer);
     }
-
-    let Keyboard = window.SimpleKeyboard.default;
-
-    let keyboard = new Keyboard({
-    onChange: input => onChange(input),
-    onKeyPress: button => onKeyPress(button),
-    layout: {
-        default: ["A B C D E F G H I J K L M N O P Q R T S U V W X Y Z {bksp}","1 2 3", "4 5 6", "7 8 9", "0"],
-        shift: ["! / #", "$ % ^", "& * (", "{shift} ) +", "{bksp}"]
-    },
-    theme: "hg-theme-default hg-layout-numeric numeric-theme"
-    });
-
-    /**
-    * Update simple-keyboard when input is changed directly
-    */
-    document.querySelector(".input").addEventListener("input", event => {
-    keyboard.setInput(event.target.value);
-    });
-
-    console.log(keyboard);
-
-    function onChange(input) {
-    document.querySelector(".input").value = input;
-    console.log("Input changed", input);
-    }
-
-    function onKeyPress(button) {
-    console.log("Button pressed", button);
-
-    /**
-    * If you want to handle the shift and caps lock buttons
-    */
-    if (button === "{shift}" || button === "{lock}") handleShift();
-    }
-
-    function handleShift() {
-    let currentLayout = keyboard.options.layoutName;
-    let shiftToggle = currentLayout === "default" ? "shift" : "default";
-
-    keyboard.setOptions({
-        layoutName: shiftToggle
-    });
-    }
+    $('[data-toggle="keybrd"]').each(function(){
+	var btn = $(this).find('.btn'), input = $($(this).data('target-input'));
+	btn.on('click',function(e){
+		e.preventDefault();
+		var val = $(this).text();
+		if(val=='Delete'){
+			input.val(input.val().slice(0,-1));
+		}else{
+			input.val(input.val()+val);
+		}
+	});
+});
 </script>
 @stop
