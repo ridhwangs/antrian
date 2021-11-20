@@ -19,10 +19,10 @@
                     <input class="rounded-0 form-control"  onkeyup="getNoPol()"  placeholder="No Kendaraan / No Polisi" id="tmp_no_pol" type="text">
                     <button type="button" class="btn btn-danger rounded-0"><-</button>
                 </div>
-                <div class="card-body ">
+                <div class="card-body">
                     <div class="row">
-                        <div class="col-md-7">
-                            <div class="mb-2" role='group'>
+                        <div class="col-md">
+                            <div class="row btn-group-sm mb-2 col-md-12 col-sm-12" role='group'>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">Q</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">W</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">E</button>
@@ -35,7 +35,7 @@
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">P</button>
                             </div>
 
-                            <div class="row btn-group-sm mb-2" role='group'>
+                            <div class="row btn-group-sm mb-2 col-md-12 col-sm-12" role='group'>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">A</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">S</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">D</button>
@@ -47,7 +47,7 @@
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">L</button>
                                 
                             </div>
-                            <div class="row btn-group-sm mb-2" role='group'>
+                            <div class="row btn-group-sm mb-2 col-md-12 col-sm-12" role='group'>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">Z</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">X</button>
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">C</button>
@@ -58,7 +58,7 @@
                                 <button type="button" class="btn btn-secondary rounded-0 py-2 mr-2" style="width:50px !important;">M</button>
                             </div>
                         </div>
-                        <div class="col-md">
+                        <div class="col-md-3">
                             <div class="mb-2" role='group'>
                                 <button type="button" class="btn btn-success rounded-0 py-2 mr-2" style="width:50px !important;">1</button>
                                 <button type="button" class="btn btn-success rounded-0 py-2 mr-2" style="width:50px !important;">2</button>
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card rounded-0" id="keyboard-kilometer" data-toggle="keybrd" data-target-input="#tmp_kilometer">
                 <div class="card-header input-group">
                     <input class="form-control rounded-0"  onkeyup="getKilometer()"  placeholder="Kilometer Kendaraan" inputmode='none' id="tmp_kilometer" type="text">
@@ -114,25 +114,6 @@
       
     </div>
    
-    <div class="col-sm">
-            @foreach($jenis_antrian AS $key => $rows)     
-                <div class="mb-4" onclick="document.getElementById('form-{{ $rows->jenis_id }}').submit();" style="cursor:pointer;">
-                    <div class="card rounded-0">
-                        <div class="card-body text-center">
-                            <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
-                            <p class="card-text">{{ $rows->keterangan}}</p>
-                            <form action="{{ route('antrian.store') }}" method="POST" id="form-{{ $rows->jenis_id }}" autocomplete="off">
-                                @csrf
-                                    <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
-                                    <input type="hidden" name="no_pol" class="no_pol">
-                                    <input type="hidden" name="kilometer" class="kilometer">
-                                    <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
 
 
 @stop
