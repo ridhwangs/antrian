@@ -106,13 +106,20 @@ class DashboardController extends Controller
         return redirect(route('dashboard.show', $id));
     }
 
-    public function ajax()
+    public function ajax(Request $request)
     {
-        $data = Antrian::WhereNotNull('counter')->orderBy('updated_at', 'DESC')->first();
-    
-        $respons = [
-            'val' => str_pad($data->nomor, 3, '0', STR_PAD_LEFT),
-        ];
-        return response()->json($respons);
+   
+        $response = new \Symfony\Component\HttpFoundation\StreamedResponse(function() use ($request) {
+            $data = Antrian::WhereNotNull('counter')->orderBy('updated_at', 'DESC')->first();
+            echo 'data: ' . json_encode($data) . "\n\n";
+            ob_flush();
+            flush();
+            usleep(10000);
+        });
+
+        $response->headers->set('Content-Type', 'text/event-stream');
+        $response->headers->set('X-Accel-Buffering', 'no');
+        $response->headers->set('Cach-Control', 'no-cache');
+        return $response;
     }
 }

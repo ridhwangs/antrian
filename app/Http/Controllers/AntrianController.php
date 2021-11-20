@@ -79,6 +79,8 @@ class AntrianController extends Controller
             'jenis_id' => $request->jenis_id,
             'dealerID' => $request->dealerID,
             'nomor' => $nomor->nomor + 1,
+            'no_pol' => $request->no_pol,
+            'kilometer' => $request->kilometer,
         ];
         Antrian::create($data);
         Tmp::where('dealerID', $request->dealerID)->update([

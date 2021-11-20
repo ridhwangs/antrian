@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - PT. Suryaputra Sarana</title>
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
     @yield('custom_style')
 </head>
 <body>
     
-        @yield('content')
+    @yield('content')
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
     @yield('custom_script')
 </body>
 </html>

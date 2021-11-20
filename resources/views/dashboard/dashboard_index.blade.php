@@ -11,14 +11,11 @@
         </div>
         <div class="col-md-3 pt-4">
             <div class="card">
-                <div class="card-header">
-                    Nomor Antrian 
-                </div>
                 <div class="card-body text-center">
                     <blockquote class="blockquote mb-0">
-                        <b style="font-size:80pt;" id="nomor_antrian">{ NOMOR }</b>
-                        <p>{ NOPOL }<p>
-                        <footer class="blockquote-footer">Counter: <cite title="Source Title">{ COUNTER }</cite></footer>
+                        <b style="font-size:100pt;" id="nomor_antrian"></b>
+                        <p id="no_pol"><p>
+                        <footer class="blockquote-footer" style="font-size:30pt;">Counter: <cite title="Source Title" id="counter"></cite></footer>
                     </blockquote>
                 </div>
             </div>
@@ -28,23 +25,30 @@
 @stop
 @section('custom_script')
 <script>
-    autoRefresh();
-    function autoRefresh() {
-        $.ajaxSetup
-        (
-            { headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } }
-        );
-        var auto_refresh = setInterval( function () {
-            $.getJSON( "{{ URL::route('dashboard.ajax') }}", 
-                function( data ) { 
-                    $.each( data, function( key, val ) 
-                        { 
-                            $('#nomor_antrian').html(val).fadeIn("fast"); 
-                        }
-                    ); 
-                }); 
-            }, 1000);
+    if(typeof(EventSource) !== "undefined") {
+        var source = new EventSource("{{ URL::route('dashboard.ajax') }}");
+        source.addEventListener('message', event => {
+                let data = JSON.parse(event.data);
+                const zeroPad = (num, places) => String(num).padStart(places, '0');
+                // console.log(data.length);
+                if(data.length===0){
+                  $("#nomor_antrian").hide();
+                }else{
+                  $("#nomor_antrian").show();
+                  $("#nomor_antrian").html(zeroPad(data.nomor, 3));
+                  $("#no_pol").html(data.no_pol);
+                  $("#counter").html(data.counter);
+                }
+                
+            }, false);
+        source.addEventListener('error', event => {
+            if (event.readyState == EventSource.CLOSED) {
+                console.log('Event was closed');
+                console.log(EventSource);
+            }
+        }, false);
+    } else {
+    console.log("Sorry, your browser does not support server-sent events...");
     }
-   
 </script>
 @stop

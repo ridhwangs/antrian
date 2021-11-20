@@ -14,5 +14,7 @@ class Antrian extends Model
         'jenis_id',
         'dealerID',
         'nomor',
+        'no_pol',
+        'kilometer',
     ];
 }
