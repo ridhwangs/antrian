@@ -27,6 +27,7 @@
                                     <tr>
                                         <td>{{ str_pad($rows->nomor, 3, '0', STR_PAD_LEFT) }}</td>
                                         <td>{{ $rows->no_pol }}</td>
+                                        <td>{{ $rows->kilometer }}</td>
                                         <td><a href="{{ route('dashboard.call', $rows->antrian_id) }}" class="btn btn-sm btn-success rounded-0">Call</a></td>
                                     </tr>
                                     @endforeach
