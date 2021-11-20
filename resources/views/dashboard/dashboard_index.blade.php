@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9 bg-dark text-white" style="min-height:100vh;">
-            Iklan Video
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0FIeV0sUVP0?autoplay=1&mute=1&loop=1&controls=0"></iframe>
         </div>
         <div class="col-md-3 pt-4">
             <div class="card">
