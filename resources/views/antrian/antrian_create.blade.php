@@ -19,29 +19,9 @@
             </div>
         </div>
 
-        <div class="col-sm">
-            @foreach($jenis_antrian AS $key => $rows)     
-                <div class="mb-4" onclick="document.getElementById('form-{{ $rows->jenis_id }}').submit();" style="cursor:pointer;">
-                    <div class="card rounded-0">
-                        <div class="card-body text-center">
-                            <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
-                            <p class="card-text">{{ $rows->keterangan}}</p>
-                            <form action="{{ route('antrian.store') }}" method="POST" id="form-{{ $rows->jenis_id }}" autocomplete="off">
-                                @csrf
-                                    <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
-                                    <input type="hidden" name="no_pol" class="no_pol">
-                                    <input type="hidden" name="kilometer" class="kilometer">
-                                    <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-    <div class="fixed-bottom">
-    <div class="row">
-        <div class="col-md-7 ">
+       
+   
+        <div class="col-md-7">
             <div class="card rounded-0" id="keyboard-nopol" data-toggle="keybrd" data-target-input="#tmp_no_pol">
                 <div class="card-header input-group">
                     <input class="rounded-0 form-control"  onkeyup="getNoPol()"  placeholder="No Kendaraan / No Polisi" id="tmp_no_pol" type="text">
@@ -139,8 +119,28 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm">
+            @foreach($jenis_antrian AS $key => $rows)     
+                <div class="mb-4" onclick="document.getElementById('form-{{ $rows->jenis_id }}').submit();" style="cursor:pointer;">
+                    <div class="card rounded-0">
+                        <div class="card-body text-center">
+                            <h1 class="card-title"><b>{{ $rows->kode}}</b></h1>
+                            <p class="card-text">{{ $rows->keterangan}}</p>
+                            <form action="{{ route('antrian.store') }}" method="POST" id="form-{{ $rows->jenis_id }}" autocomplete="off">
+                                @csrf
+                                    <input type="hidden" name="jenis_id" value="{{ $rows->jenis_id }}">
+                                    <input type="hidden" name="no_pol" class="no_pol">
+                                    <input type="hidden" name="kilometer" class="kilometer">
+                                    <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </div>
+   
 
 
 
