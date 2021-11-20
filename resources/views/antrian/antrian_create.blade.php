@@ -41,7 +41,7 @@
     </div>
     <div class="fixed-bottom">
     <div class="row">
-        <div class="col-md-7 mr-0 mr-auto">
+        <div class="col-md-7 ">
             <div class="card rounded-0" id="keyboard-nopol" data-toggle="keybrd" data-target-input="#tmp_no_pol">
                 <div class="card-header input-group">
                     <input class="rounded-0 form-control"  onkeyup="getNoPol()"  placeholder="No Kendaraan / No Polisi" id="tmp_no_pol" type="text">
@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 ml-0 ml-auto">
+        <div class="col-md-2 ">
             <div class="card rounded-0" id="keyboard-kilometer" data-toggle="keybrd" data-target-input="#tmp_kilometer">
                 <div class="card-header input-group">
                     <input class="form-control rounded-0"  onkeyup="getKilometer()"  placeholder="Kilometer Kendaraan" inputmode='none' id="tmp_kilometer" type="text">
