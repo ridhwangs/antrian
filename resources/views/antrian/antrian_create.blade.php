@@ -21,7 +21,7 @@
 
         <div class="col-sm-4">
             <div class="mb-3">
-                <input type="text" class="form-control input" onkeyup="getNoPol()"  id="tmp_no_pol" aria-describedby="tmp_no_pol" autofocus>
+                <input type="text" class="form-control input" onkeyup="getNoPol()" inputmode='none' id="tmp_no_pol" aria-describedby="tmp_no_pol" autofocus>
                 <div id="tmp_no_pol" class="form-text">Masukan No Polisi</div>
             </div>
             <div class="mb-3">
