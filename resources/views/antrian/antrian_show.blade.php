@@ -13,6 +13,8 @@
         <img src="//www.ptsps.co.id/wp-content/uploads/2019/11/logo-sps.png" width="250px">
         <p style="font-size:50pt;">PT. SURYAPUTRA SARANA</p>
         <p style="font-size:40pt;">{{ $data->dealerID }}</p>
+        <p style="font-size:50pt;">{{ date('Y-m-d') }}</p>
+        <p style="font-size:50pt;">{{ date('H:i:s') }}</p>
         <p style="font-size:50pt;">Nomor Antrian</p>
         <h1 style="font-size:280pt;"><b>{{ str_pad($data->nomor, 3, '0', STR_PAD_LEFT) }}</b></h1>
         @if(!empty($data->no_pol))
