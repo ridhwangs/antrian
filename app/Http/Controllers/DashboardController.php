@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Antrian;
+use App\Models\Cabang;
 
 class DashboardController extends Controller
 {
@@ -29,7 +30,8 @@ class DashboardController extends Controller
     public function create()
     {
         $compact = [
-            'data_antrian' => Antrian::whereNull('counter')->get(),
+            'data_cabang' => Cabang::all(),
+            'data_antrian' => Antrian::where('dealerID', @$_GET['dealerID'])->whereNull('counter')->get(),
         ];
 
         return view('dashboard.dashboard_create', $compact);
@@ -55,6 +57,7 @@ class DashboardController extends Controller
     public function show($id)
     {
         $compact = [
+            
             'data_antrian' => Antrian::where('antrian_id', $id)->first(),
         ];
 
@@ -98,6 +101,7 @@ class DashboardController extends Controller
     public function call($id)
     {
         $data = [
+            'dealerID' => $_GET['dealerID'],
             'counter' => $_GET['counter'],
             'updated_at' => date('Y-m-d H:i:s')
         ];
@@ -114,7 +118,7 @@ class DashboardController extends Controller
             echo 'data: ' . json_encode($data) . "\n\n";
             ob_flush();
             flush();
-            usleep(10000);
+            usleep(20000);
         });
 
         $response->headers->set('Content-Type', 'text/event-stream');

@@ -9,6 +9,23 @@
 @stop
 @section('content')
 <div class="d-flex align-items-center">
+    @if(empty($_GET['dealerID']))
+    <div class="container-fluid">
+    <div class="row p-4 d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        @foreach($data_cabang AS $key => $rows)
+        <div class="col-sm-6 mb-3">
+            <div class="card rounded-0">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><b>{{ $rows->kode_cabang}}</b></h1>
+                    <p class="card-text">{{ $rows->nama_cabang}}</p>
+                    <a href="{{ route('dashboard.create') }}?dealerID={{ $rows->dealerID }}" class="btn btn-primary btn-block rounded-0">Pilih Cabang</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+    @else
     <div class="container-fluid">
         @if(!empty($_GET['counter']))
         <div class="row">
@@ -57,7 +74,7 @@
                                         <td>{{ date('d', strtotime($rows->created_at)) }}</td>
                                         <td>{{ date('F', strtotime($rows->created_at)) }}</td>
                                         <td>{{ date('H:i', strtotime($rows->created_at)) }}</td>
-                                        <td><a href="{{ route('dashboard.call', $rows->antrian_id) }}?counter={{ $_GET['counter'] }}" class="btn btn-sm btn-success rounded-0">Call</a></td>
+                                        <td><a href="{{ route('dashboard.call', $rows->antrian_id) }}?dealerID={{ $_GET['dealerID'] }}?counter={{ $_GET['counter'] }}" class="btn btn-sm btn-success rounded-0">Call</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -74,6 +91,7 @@
                 <div class="card-body">
                     <form method="GET">
                         <div class="mb-3">
+                            <input type="hidden" name="dealerID" value="{{ $_GET['dealerID'] }}">
                             <input type="number" name="counter" class="form-control" id="counter" aria-describedby="counter" autofocus>
                             <div id="counter" class="form-text">Masukan Counter dengan Angka</div>
                         </div>
@@ -84,6 +102,7 @@
         </div>
         @endif
     </div>
+    @endif
 </div>
 @stop
 @section('custom_script')
