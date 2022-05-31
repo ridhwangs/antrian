@@ -17,7 +17,7 @@
                         <h3>Nomor antrian {{ str_pad($data_antrian->nomor, 3, '0', STR_PAD_LEFT) }}</h3>
                         <p>{{ $data_antrian->no_pol; }}</p>
                         <p>Ke counter : {{ $data_antrian->counter; }}</p>
-                        <a href="{{ route('dashboard.create') }}?counter={{ $_GET['counter'] }}" class="btn btn-success btn-block btn-sm rounded-0">Kembali</a>
+                        <a href="{{ route('dashboard.create') }}?dealerID={{ $_GET['dealerID'] }}&counter={{ $_GET['counter'] }}" class="btn btn-success btn-block btn-sm rounded-0">Kembali</a>
                     </div>
                 </div>
                

@@ -107,7 +107,7 @@ class DashboardController extends Controller
         ];
         
         Antrian::where('antrian_id', $id)->update($data);
-        return redirect(route('dashboard.show', $id).'?counter='. $_GET['counter']);
+        return redirect(route('dashboard.show', $id).'?dealerID='. $_GET['dealerID'].'&counter='. $_GET['counter']);
     }
 
     public function ajax(Request $request)

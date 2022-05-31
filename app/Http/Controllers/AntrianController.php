@@ -66,7 +66,7 @@ class AntrianController extends Controller
     public function store(Request $request)
     {
        
-        if (empty(Tmp::count())){
+        if (empty(Tmp::where('dealerID', $request->dealerID)->count())){
             $create = [
                 'jenis_id' => $request->jenis_id,
                 'dealerID' => $request->dealerID,
@@ -74,7 +74,7 @@ class AntrianController extends Controller
             ];
             Tmp::create($create);
         }
-        $nomor = Tmp::first();
+        $nomor = Tmp::where('dealerID', $request->dealerID)->first();
         $data = [
             'jenis_id' => $request->jenis_id,
             'dealerID' => $request->dealerID,

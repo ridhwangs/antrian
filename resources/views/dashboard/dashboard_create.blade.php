@@ -74,7 +74,7 @@
                                         <td>{{ date('d', strtotime($rows->created_at)) }}</td>
                                         <td>{{ date('F', strtotime($rows->created_at)) }}</td>
                                         <td>{{ date('H:i', strtotime($rows->created_at)) }}</td>
-                                        <td><a href="{{ route('dashboard.call', $rows->antrian_id) }}?dealerID={{ $_GET['dealerID'] }}?counter={{ $_GET['counter'] }}" class="btn btn-sm btn-success rounded-0">Call</a></td>
+                                        <td><a href="{{ route('dashboard.call', $rows->antrian_id) }}?dealerID={{ $_GET['dealerID'] }}&counter={{ $_GET['counter'] }}" class="btn btn-sm btn-success rounded-0">Call</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
